@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
+use Inertia\ResponseFactory;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,5 +36,8 @@ class AppServiceProvider extends ServiceProvider
                 );
             },
         ]);
+        ResponseFactory::macro('modal', function ($modal) {
+            inertia()->share(['modal' => $modal]);
+        });
     }
 }

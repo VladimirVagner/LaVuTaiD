@@ -76,5 +76,30 @@
     "Email Verification": "Верификация email-адреса",
     "Are you sure your want to delete your account?": "Вы уверены, что хотите удалить свою учетную запись?",
     "Success": "Успешно",
-    "Error": "Ошибка"
+    "Error": "Ошибка",
+    "Shop": "Интернет-магазин",
+    "Roles": "Роли и разрешения",
+    "Title": "Название",
+    "Created": "Создано",
+    "Updated": "Обновлено",
+    "Edit": "Редактировать",
+    "Delete": "Удалить",
+    "Actions": "Действия",
+    "Are you sure you want to continue? All unsaved changes will be lost": "Вы уверены, что хотите продолжить? Все несохраненные изменения будут потеряны",
+    "Continue": "Продолжить",
+    "Role Edit": "Редактирование роли",
+    "Create": "Создать",
+    "Management": "Управление",
+
+
+    "user": "Пользователь",
+    "user-create": "Создание пользователя",
+    "user-delete": "Удаление пользователя",
+    "user-edit": "Редактирование пользователя",
+    "user-list": "Просмотр пользователей",
+    "role": "Роль",
+    "role-create": "Создание роли",
+    "role-delete": "Удаление роли",
+    "role-edit": "Редактирование роли",
+    "role-list": "Просмотр ролей"
 }

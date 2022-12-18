@@ -3,11 +3,11 @@ import { ref } from 'vue';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
-import NavLink from '@/Components/NavLink.vue';
-import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/inertia-vue3';
 import ThemeButton from '@/Components/ThemeButton.vue';
 import NotificationGroup from "@/Components/NotificationGroup.vue";
+import MenuLayout from "@/Layouts/MenuLayout.vue";
+
 const showingNavigationDropdown = ref(false);
 </script>
 
@@ -30,9 +30,7 @@ const showingNavigationDropdown = ref(false);
 
                                 <!-- Navigation Links -->
                                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                                    <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                        {{ __('Dashboard') }}
-                                    </NavLink>
+                                    <MenuLayout component="NavLink" :can="$page.props.auth.can" />
                                 </div>
                             </div>
 
@@ -114,9 +112,7 @@ const showingNavigationDropdown = ref(false);
                         class="sm:hidden"
                     >
                         <div class="pt-2 pb-3 space-y-1">
-                            <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                {{ __('Dashboard') }}
-                            </ResponsiveNavLink>
+                            <MenuLayout component="ResponsiveNavLink" :can="$page.props.auth.can" />
                         </div>
 
                         <!-- Responsive Settings Options -->
@@ -154,13 +150,3 @@ const showingNavigationDropdown = ref(false);
         <NotificationGroup />
     </div>
 </template>
-
-<script !src="">
-export default {
-    methods: {
-        onClick(props) {
-            console.log(props.item)
-        }
-    }
-}
-</script>

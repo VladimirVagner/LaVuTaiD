@@ -1,6 +1,6 @@
 <script setup>
 import { useDark, useToggle } from '@vueuse/core'
-console.log(1)
+
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
 </script>
