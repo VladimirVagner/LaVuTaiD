@@ -29,7 +29,7 @@
             <RoleCreateAndEdit :role="role" :permissions="permissions" @role:touched="RoleTouched = true" @save:success="ModalCrudRole = false" />
         </ModalCrud>
 
-<!--
+        <!--
 -----------------------------------------------------------------------------------------------------
 ---------Модальное окно с запросом на подтверждение закрытия без сохранения изменившихся данных-------
 ------------------------------------------------------------------------------------------------------
@@ -77,6 +77,7 @@ export default {
             {name: 'updated_at',type: 'date'}
         ]
         const ModalCrudRole = ref(false);
+        const ModalDeleteRole = ref(false);
         const RoleTouched = ref(false)
         const ModalChanges = ref(false);
 
@@ -103,6 +104,7 @@ export default {
             HeadTable,
             RowsTable,
             ModalCrudRole,
+            ModalDeleteRole,
             RoleTouched,
             ModalChanges,
             openModalCrud,

@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Inertia\Inertia;
 use Spatie\Permission\Models\Permission;
 
 class RoleController extends Controller
@@ -18,7 +16,7 @@ class RoleController extends Controller
     {
         $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index','store']]);
         $this->middleware('permission:role-create', ['only' => ['create','store']]);
-//        $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
+        $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
         $this->middleware('permission:role-delete', ['only' => ['destroy']]);
     }
 
@@ -77,7 +75,6 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        abort('404', 'test');
         inertia()->modal('RoleAndPermission/RoleCreateAndEdit');
         $role = Role::with('permissions')->find($id, ['id','name']);
         $permissions = Permission::orderBy('id')->get(['id','name']);
@@ -118,6 +115,7 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
+        return redirect()->route('roles.index')->with('success','Role deleted successfully');
         Role::where('id',$id)->delete();
         return redirect()->route('roles.index')->with('success','Role deleted successfully');
     }
