@@ -1,11 +1,5 @@
 <script setup>
-import DangerButton from '@/Components/DangerButton.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import Modal from '@/Components/Modal.vue';
-import SecondaryButton from '@/Components/SecondaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-import { useForm, usePage } from '@inertiajs/inertia-vue3';
+import { useForm } from '@inertiajs/inertia-vue3';
 import { nextTick, ref } from 'vue';
 
 const confirmingUserDeletion = ref(false);
@@ -47,7 +41,7 @@ const closeModal = () => {
             </p>
         </header>
 
-        <DangerButton @click="confirmUserDeletion">{{ __('Delete Account') }}</DangerButton>
+        <Button class-button="danger" @click="confirmUserDeletion">{{ __('Delete Account') }}</Button>
 
         <Modal :show="confirmingUserDeletion" @close="closeModal">
             <div class="p-6">
@@ -76,16 +70,17 @@ const closeModal = () => {
                 </div>
 
                 <div class="mt-6 flex justify-end">
-                    <SecondaryButton @click="closeModal"> {{ __('Cancel') }} </SecondaryButton>
+                    <Button class-button="secondary" @click="closeModal"> {{ __('Cancel') }} </Button>
 
-                    <DangerButton
-                        class="ml-3"
+                    <Button
+                        class-button="danger"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
+                        :loading="form.processing"
                         @click="deleteUser"
                     >
                         {{ __('Delete Account') }}
-                    </DangerButton>
+                    </Button>
                 </div>
             </div>
         </Modal>

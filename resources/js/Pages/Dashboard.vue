@@ -1,23 +1,18 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/inertia-vue3';
-
+//
 </script>
 
 <template>
-    <Head :title="__('Dashboard')" />
+    <AuthenticatedLayout title="Dashboard">
 
-    <AuthenticatedLayout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">{{ __('Dashboard') }}</h2>
-        </template>
-
-        <div class="py-12" @click="addNotification({type: 'success', text: __('Example')})">
+        <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 transition-colors duration-500 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900 dark:text-gray-100">{{ __('Click me!') }}</div>
+                <div
+                    class="bg-white dark:bg-gray-800 transition-colors duration-500 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="p-6 text-gray-900 dark:text-gray-100">{{ __('Example') }}</div>
                 </div>
             </div>
         </div>
+
     </AuthenticatedLayout>
 </template>

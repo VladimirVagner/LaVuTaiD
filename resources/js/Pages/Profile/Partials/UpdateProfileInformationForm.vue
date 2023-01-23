@@ -1,10 +1,5 @@
 <script setup>
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
 import { Link, useForm, usePage } from '@inertiajs/inertia-vue3';
-import { ref } from 'vue';
 
 const props = defineProps({
     mustVerifyEmail: Boolean,
@@ -83,7 +78,10 @@ const form = useForm({
             </div>
 
             <div class="flex items-center gap-4">
-                <PrimaryButton :disabled="form.processing">{{ __('Save') }}</PrimaryButton>
+                <Button class-button="primary"
+                        :disabled="form.processing"
+                        :loading="form.processing"
+                >{{ __('Save') }}</Button>
 
                 <Transition enter-from-class="opacity-0" leave-to-class="opacity-0" class="transition ease-in-out">
                     <p v-if="form.recentlySuccessful" class="text-sm text-gray-600 dark:text-gray-400">{{ __('Saved.') }}</p>

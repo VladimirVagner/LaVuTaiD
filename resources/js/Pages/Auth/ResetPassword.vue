@@ -1,10 +1,5 @@
 <script setup>
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-import { Head, useForm } from '@inertiajs/inertia-vue3';
+import {Head, useForm} from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
     email: String,
@@ -27,11 +22,11 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Reset Password" />
+        <Head title="Reset Password"/>
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="email" :value="__('Email')" />
+                <InputLabel for="email" :value="__('Email')"/>
 
                 <TextInput
                     id="email"
@@ -43,11 +38,11 @@ const submit = () => {
                     autocomplete="username"
                 />
 
-                <InputError class="mt-2" :message="form.errors.email" />
+                <InputError class="mt-2" :message="form.errors.email"/>
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" :value="__('Password')" />
+                <InputLabel for="password" :value="__('Password')"/>
 
                 <TextInput
                     id="password"
@@ -58,11 +53,11 @@ const submit = () => {
                     autocomplete="new-password"
                 />
 
-                <InputError class="mt-2" :message="form.errors.password" />
+                <InputError class="mt-2" :message="form.errors.password"/>
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password_confirmation" :value="__('Confirm Password')" />
+                <InputLabel for="password_confirmation" :value="__('Confirm Password')"/>
 
                 <TextInput
                     id="password_confirmation"
@@ -73,13 +68,16 @@ const submit = () => {
                     autocomplete="new-password"
                 />
 
-                <InputError class="mt-2" :message="form.errors.password_confirmation" />
+                <InputError class="mt-2" :message="form.errors.password_confirmation"/>
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                <Button class-button="primary"
+                        :class="{ 'opacity-25': form.processing }"
+                        :disabled="form.processing"
+                        :loading="form.processing">
                     {{ __('Reset Password') }}
-                </PrimaryButton>
+                </Button>
             </div>
         </form>
     </GuestLayout>

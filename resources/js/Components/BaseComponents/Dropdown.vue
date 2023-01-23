@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, onUnmounted, ref } from 'vue';
+import {computed, ref} from 'vue';
 
 const props = defineProps({
     align: {
@@ -13,21 +13,10 @@ const props = defineProps({
     },
 });
 
-const closeOnEscape = (e) => {
-    if (open.value && e.key === 'Escape') {
-        open.value = false;
-    }
-};
-const closeOnClick = (e) => open.value = false;
-
-onMounted(() => document.addEventListener('keydown', closeOnEscape));
-onMounted(() => document.addEventListener('click', closeOnClick));
-onUnmounted(() => document.removeEventListener('keydown', closeOnEscape));
-onUnmounted(() => document.removeEventListener('click', closeOnClick));
-
 const widthClass = computed(() => {
     return {
         48: 'w-48',
+        full: 'w-full',
     }[props.width.toString()];
 });
 
@@ -41,17 +30,17 @@ const alignmentClasses = computed(() => {
     }
 });
 
-const open = ref(false);
+const openDropdown = ref(false);
 </script>
 
 <template>
     <div class="relative">
-        <div @click.stop="open = !open" class="h-full">
-            <slot name="trigger" />
+        <div @click="openDropdown = !openDropdown" class="h-full">
+            <slot name="trigger"/>
         </div>
 
         <!-- Full Screen Dropdown Overlay -->
-        <div v-show="open" class="fixed inset-0 z-40" @click="open = false"></div>
+        <div v-show="openDropdown" class="fixed inset-0 z-40" @click="openDropdown = false"></div>
 
         <transition
             enter-active-class="transition ease-out duration-200"
@@ -62,14 +51,14 @@ const open = ref(false);
             leave-to-class="transform opacity-0 scale-95"
         >
             <div
-                v-show="open"
+                v-show="openDropdown"
                 class="absolute z-50 mt-2 rounded-md shadow-lg"
                 :class="[widthClass, alignmentClasses]"
                 style="display: none"
-                @click="open = false"
+                @click="openDropdown = false"
             >
                 <div class="rounded-md ring-1 ring-black ring-opacity-5" :class="contentClasses">
-                    <slot name="content" />
+                    <slot name="content"/>
                 </div>
             </div>
         </transition>
